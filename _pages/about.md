@@ -1,3 +1,13 @@
+---
+permalink: /
+title: "Hey there, I'm Pinqiao!"
+excerpt: "About me"
+author_profile: true
+redirect_from:
+  - /about/
+  - /about.html
+---
+
 About
 ====
 I am a second-year Master's Student at [Columbia University](https://www.gsas.columbia.edu/), and I am currently a Departmental Research Assistant with [Prof. Bruce Yang](https://www.linkedin.com/in/brucehy/) and [Prof. Christina Wang](https://shanghai.nyu.edu/academics/faculty/directory/christina-dan-wang). I obtained my bachelor’s degree in statistics and economics from the [University of North Carolina at Chapel Hill](https://www.unc.edu/), where I worked with [Prof. Yufeng Liu](https://yfliu.web.unc.edu/). 
