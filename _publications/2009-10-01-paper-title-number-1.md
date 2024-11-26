@@ -10,7 +10,7 @@ excerpt: >
   has accepted my first-authored paper on this as an Oral Presentation. Our next step is
   to work on Graph Multi-Agent/ Visual LLM.
 date: 2024-11-03
-venue: 'Journal 1'
+venue: 'ACM International Conference of AI in Finance(ICAIF) 2024'
 slidesurl: 'http://PinqiaoWang.github.io/files/Oral_Presentation_ICAIF_24.pdf'
 paperurl: 'http://PinqiaoWang.github.io/files/paper1.pdf'
 citation: >
