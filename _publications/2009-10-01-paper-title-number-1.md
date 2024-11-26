@@ -2,7 +2,7 @@
 title: "FinRobot: AI Agent for Equity Research and Valuation with Large Language Models"
 collection: publications
 category: manuscripts
-permalink: /publication/2010-10-01-paper-title-number-1
+permalink: /publications/2010-10-01-paper-title-number-1
 excerpt: >
   It is developing a multi-layer/multi-agent debate reinforcement algorithm
   in a chain-of-thought prompting setting that can reliably and stably produce
@@ -12,7 +12,7 @@ excerpt: >
 date: 2024-11-03
 venue: 'Journal 1'
 slidesurl: 'http://PinqiaoWang.github.io/files/Oral_Presentation_ICAIF_24.pdf'
-paperurl: 'http://PinqiaoWaNG.github.io/files/paper1.pdf'
+paperurl: 'http://PinqiaoWang.github.io/files/paper1.pdf'
 citation: >
   Tianyu Zhou, Pinqiao Wang, Yilin Wu, and Hongyang Yang. 2024. FinRobot: AI Agent
   for Equity Research and Valuation with Large Language Models. In Proceedings of ACM
