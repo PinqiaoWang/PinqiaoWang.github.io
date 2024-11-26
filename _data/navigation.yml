@@ -6,7 +6,7 @@
 
 main:
   - title: "Publications"
-    url: /publications/
+    url: /_publications/2009-10-01-paper-title-number-1.md
 
   #- title: "Talks"
   #  url: /talks/    
@@ -21,7 +21,7 @@ main:
   #  url: /year-archive/
     
   - title: "CV"
-    url: /cv/
+    url: /file/CV.pdf/
     
   #- title: "Guide"
   #  url: /markdown/
