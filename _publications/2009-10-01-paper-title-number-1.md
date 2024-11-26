@@ -11,8 +11,8 @@ excerpt: >
   to work on Graph Multi-Agent/ Visual LLM.
 date: 2024-11-03
 venue: 'Journal 1'
-slidesurl: 'http://academicpages.github.io/files/Oral_Presentation_ICAIF_24.pdf'
-paperurl: 'http://academicpages.github.io/files/paper1.pdf'
+slidesurl: 'http://PinqiaoWang.github.io/files/Oral_Presentation_ICAIF_24.pdf'
+paperurl: 'http://PinqiaoWaNG.github.io/files/paper1.pdf'
 citation: >
   Tianyu Zhou, Pinqiao Wang, Yilin Wu, and Hongyang Yang. 2024. FinRobot: AI Agent
   for Equity Research and Valuation with Large Language Models. In Proceedings of ACM
