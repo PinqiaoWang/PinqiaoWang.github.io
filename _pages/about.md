@@ -10,9 +10,8 @@ redirect_from:
 
 About
 ====
-I am a second-year Master's Student at [Columbia University](https://www.gsas.columbia.edu/), and I am currently a Departmental Research Assistant with [Prof. Bruce Yang](https://www.linkedin.com/in/brucehy/) and [Prof. Christina Wang](https://shanghai.nyu.edu/academics/faculty/directory/christina-dan-wang). I obtained my bachelor’s degree in statistics and economics from the [University of North Carolina at Chapel Hill](https://www.unc.edu/), where I worked with [Prof. Yufeng Liu](https://yfliu.web.unc.edu/). 
+I am a first-year Ph.D student at [UVA School of Data Science](https://datascience.virginia.edu/), and I am currently a Research Assitant at the RISE Lab led by [Prof.Sheng Li](https://sheng-li.org/). Before I was a Master's Student at [Columbia University](https://www.gsas.columbia.edu/), where I was a Departmental Research Assistant with [Prof. Bruce Yang](https://www.linkedin.com/in/brucehy/) and [Prof. Christina Wang](https://shanghai.nyu.edu/academics/faculty/directory/christina-dan-wang). I obtained my bachelor’s degree in statistics and economics from the [University of North Carolina at Chapel Hill](https://www.unc.edu/), where I worked with [Prof. Yufeng Liu](https://yfliu.web.unc.edu/). 
 
-<span style="color:red;">I am currently looking for - **PhD positions** in 2025 Fall(Spring), - **full-time RA positions**(starting in Spring 2025), and - **internships** in summer 2025.</span>
 
 Research Interest
 ====
@@ -24,6 +23,7 @@ Develop Quantitative Methods to understand agent behaviors for designing efficie
 
 News
 ====
+- Feb 2025: Officially admitted and committed to my offer at UVA!
 - Nov 2024：Invited Oral presentation(less than 5%) at ACM ICAIF 2024!
 - Nov 2024: One paper is accepted by ACM ICAIF 2024!
 - May 2024: I joined Agam Capital as a summer AI Research Assistant!
