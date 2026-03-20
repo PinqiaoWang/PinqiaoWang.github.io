@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pinqiao Wang — PhD Student, UVA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink: #1b1b1b;
+  --body: #3a3a3a;
+  --muted: #7a7a7a;
+  --faint: #b0b0b0;
+  --rule: #e2e2e2;
+  --bg: #fafafa;
+  --card: #ffffff;
+  --accent: #1a5276;
+  --accent-hover: #154360;
+  --highlight: #d4e6f1;
+  --serif: 'Source Serif 4', 'Georgia', serif;
+  --sans: 'DM Sans', 'Helvetica Neue', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: var(--sans); background: var(--bg); color: var(--body);
+  line-height: 1.7; -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--highlight); color: var(--ink); }
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-hover); }
+
+/* ─── BANNER ─── */
+.banner {
+  width: 100%;
+  height: 280px;
+  background: url('images/banner.jpg') center center / cover no-repeat;
+  position: relative;
+}
+.banner-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, var(--bg) 100%);
+}
+
+/* ─── NAV ─── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,250,250,0.85);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-inner {
+  max-width: 860px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.65rem 1.5rem;
+}
+.nav-brand {
+  font-family: var(--serif); font-weight: 600; font-size: 1.1rem;
+  color: var(--ink); text-decoration: none;
+}
+.nav-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+.nav-links a {
+  font-size: 0.82rem; font-weight: 500; color: var(--muted);
+  text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+
+.container { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ─── HERO ─── */
+.hero {
+  padding: 4rem 0 3rem;
+  display: flex; gap: 2.5rem; align-items: flex-start;
+}
+.hero-photo {
+  flex-shrink: 0; width: 170px; height: 170px;
+  border-radius: 50%; overflow: hidden;
+  background: var(--rule);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-photo .placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 3.2rem; font-weight: 600;
+  color: var(--accent); background: var(--highlight);
+}
+.hero-info { flex: 1; padding-top: 0.2rem; }
+.hero-info h1 {
+  font-family: var(--serif); font-size: 2.1rem; font-weight: 600;
+  color: var(--ink); line-height: 1.15; margin-bottom: 0.25rem;
+}
+.hero-info .role { font-size: 1rem; font-weight: 500; color: var(--accent); margin-bottom: 0.1rem; }
+.hero-info .affiliation { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.9rem; }
+.hero-info .affiliation a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+.hero-info .affiliation a:hover { color: var(--ink); }
+.hero-bio { font-size: 0.9rem; color: var(--body); line-height: 1.8; margin-bottom: 1rem; }
+.hero-bio strong { font-weight: 600; color: var(--ink); }
+.hero-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.hero-links a {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-size: 0.76rem; font-weight: 500;
+  color: var(--ink); background: var(--card);
+  border: 1px solid var(--rule);
+  padding: 0.3rem 0.65rem; border-radius: 6px;
+  transition: all 0.2s;
+}
+.hero-links a:hover {
+  border-color: var(--accent); color: var(--accent);
+  box-shadow: 0 2px 8px rgba(26,82,118,0.08);
+}
+.hero-links a svg { width: 13px; height: 13px; }
+
+/* ─── SECTIONS ─── */
+.section { padding: 2.5rem 0; }
+.section + .section { border-top: 1px solid var(--rule); }
+.section-title {
+  font-family: var(--serif); font-size: 1.45rem; font-weight: 600;
+  color: var(--ink); margin-bottom: 1.4rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.section-title .emoji { font-size: 1.15rem; }
+
+/* ─── NEWS ─── */
+.news-list { list-style: none; }
+.news-item {
+  padding: 0.5rem 0; display: flex; gap: 1rem; align-items: baseline; font-size: 0.88rem;
+}
+.news-item + .news-item { border-top: 1px solid #f0f0f0; }
+.news-date {
+  flex-shrink: 0; width: 78px;
+  font-family: var(--mono); font-size: 0.73rem; color: var(--accent);
+}
+.news-text { color: var(--body); line-height: 1.6; }
+.news-text strong { font-weight: 600; color: var(--ink); }
+
+/* ─── EXPERIENCE ─── */
+.exp-list { display: flex; flex-direction: column; gap: 0; }
+.exp-item {
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  padding: 1rem 0;
+}
+.exp-item + .exp-item { border-top: 1px solid #f0f0f0; }
+.exp-logo {
+  flex-shrink: 0; width: 52px; height: 52px;
+  border-radius: 10px; overflow: hidden;
+  background: var(--card); border: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 0.6rem; font-weight: 500;
+  color: var(--accent); text-align: center; padding: 0.2rem;
+  line-height: 1.15;
+}
+.exp-logo img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+.exp-content { flex: 1; }
+.exp-role { font-size: 0.92rem; font-weight: 600; color: var(--ink); line-height: 1.3; }
+.exp-org { font-size: 0.85rem; color: var(--body); }
+.exp-org a { color: var(--accent); }
+.exp-meta {
+  font-family: var(--mono); font-size: 0.7rem; color: var(--muted);
+  margin-top: 0.15rem;
+}
+.exp-desc {
+  font-size: 0.82rem; color: var(--muted); line-height: 1.6;
+  margin-top: 0.3rem;
+}
+
+/* ─── PUBLICATIONS ─── */
+.pub-group { margin-bottom: 1.8rem; }
+.pub-group:last-child { margin-bottom: 0; }
+.pub-group-title {
+  font-family: var(--serif); font-size: 1.05rem; font-weight: 500;
+  color: var(--ink); margin-bottom: 0.7rem;
+  padding-bottom: 0.35rem; border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+.pub-list { list-style: none; }
+.pub-item { padding: 0.8rem 0; display: flex; gap: 0.9rem; align-items: flex-start; }
+.pub-item + .pub-item { border-top: 1px solid #f0f0f0; }
+.pub-marker {
+  flex-shrink: 0; margin-top: 0.35rem;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); opacity: 0.35;
+}
+.pub-content { flex: 1; }
+.pub-title { font-size: 0.9rem; font-weight: 500; color: var(--ink); line-height: 1.4; margin-bottom: 0.15rem; }
+.pub-authors { font-size: 0.8rem; color: var(--muted); line-height: 1.45; margin-bottom: 0.15rem; }
+.pub-authors .me {
+  font-weight: 600; color: var(--ink);
+  text-decoration: underline; text-decoration-color: var(--accent);
+  text-underline-offset: 2px;
+}
+.pub-venue {
+  font-family: var(--mono); font-size: 0.7rem;
+  color: var(--accent); font-weight: 500; margin-bottom: 0.3rem;
+}
+.pub-badges { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+.pub-badge {
+  font-size: 0.68rem; font-weight: 500;
+  padding: 0.12rem 0.45rem; border-radius: 4px;
+  text-decoration: none; transition: all 0.2s;
+}
+.pub-badge.paper { background: #eaf2f8; color: var(--accent); }
+.pub-badge.paper:hover { background: var(--accent); color: #fff; }
+.pub-badge.code { background: #f0f0f0; color: #555; }
+.pub-badge.code:hover { background: #555; color: #fff; }
+.pub-badge.oral { background: #fdebd0; color: #a0522d; }
+
+/* ─── PROJECTS ─── */
+.project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.project-card {
+  background: var(--card); border: 1px solid var(--rule);
+  border-radius: 8px; padding: 1.3rem;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.project-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px rgba(26,82,118,0.06);
+}
+.project-tag {
+  font-family: var(--mono); font-size: 0.66rem;
+  color: var(--accent); font-weight: 500; margin-bottom: 0.3rem;
+}
+.project-card h3 {
+  font-family: var(--serif); font-size: 1.08rem; font-weight: 600;
+  color: var(--ink); margin-bottom: 0.35rem;
+}
+.project-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.6rem; }
+.project-card .proj-links { display: flex; gap: 0.35rem; }
+.project-card .proj-links a {
+  font-size: 0.68rem; font-weight: 500; padding: 0.12rem 0.45rem;
+  border-radius: 4px; background: #f0f0f0; color: #555; transition: all 0.2s;
+}
+.project-card .proj-links a:hover { background: var(--accent); color: #fff; }
+
+/* ─── AWARDS ─── */
+.awards-list { list-style: none; }
+.award-item {
+  padding: 0.45rem 0; display: flex; gap: 1rem; align-items: baseline; font-size: 0.88rem;
+}
+.award-item + .award-item { border-top: 1px solid #f0f0f0; }
+.award-year {
+  flex-shrink: 0; width: 42px;
+  font-family: var(--mono); font-size: 0.73rem; color: var(--accent);
+}
+.award-text { color: var(--body); line-height: 1.5; }
+
+/* ─── SERVICE ─── */
+.service-text { font-size: 0.88rem; color: var(--body); line-height: 1.8; }
+
+/* ─── PERSONAL / MUSIC ─── */
+.personal-content { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+.personal-text { font-size: 0.9rem; color: var(--body); line-height: 1.8; }
+.personal-text p + p { margin-top: 0.7rem; }
+.music-card {
+  background: var(--card); border: 1px solid var(--rule);
+  border-radius: 8px; padding: 1.3rem;
+}
+.music-card h3 { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 0.1rem; }
+.music-subtitle { font-size: 0.76rem; color: var(--muted); margin-bottom: 0.9rem; }
+.music-track { display: flex; align-items: center; gap: 0.7rem; padding: 0.55rem 0; }
+.music-track + .music-track { border-top: 1px solid #f0f0f0; }
+.track-num { font-family: var(--mono); font-size: 0.7rem; color: var(--faint); width: 16px; text-align: right; }
+.track-info { flex: 1; }
+.track-title { font-size: 0.83rem; font-weight: 500; color: var(--ink); }
+.track-meta { font-size: 0.7rem; color: var(--muted); }
+.track-play {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1.5px solid var(--rule); background: transparent;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; color: var(--faint);
+}
+.track-play:hover { border-color: var(--accent); color: var(--accent); }
+.track-play svg { width: 9px; height: 9px; fill: currentColor; margin-left: 1px; }
+
+/* ─── FOOTER ─── */
+footer {
+  margin-top: 1rem; padding: 2rem 0; border-top: 1px solid var(--rule);
+  text-align: center; font-size: 0.76rem; color: var(--faint);
+}
+footer a { color: var(--muted); }
+footer a:hover { color: var(--ink); }
+
+/* ─── REVEAL ─── */
+.reveal {
+  opacity: 0; transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 700px) {
+  .hero { flex-direction: column; align-items: center; text-align: center; gap: 1.5rem; }
+  .hero-links { justify-content: center; }
+  .project-grid { grid-template-columns: 1fr; }
+  .personal-content { grid-template-columns: 1fr; }
+  .hero-info h1 { font-size: 1.7rem; }
+  .nav-links { gap: 0.8rem; }
+  .nav-links a { font-size: 0.72rem; }
+  .exp-logo { width: 42px; height: 42px; }
+}
+@media (max-width: 480px) {
+  .container { padding: 0 1rem; }
+  .nav-inner { padding: 0.5rem 1rem; }
+  .hero { padding: 2.5rem 0 2rem; }
+  .hero-photo { width: 130px; height: 130px; }
+  .news-item, .award-item { flex-direction: column; gap: 0.1rem; }
+  .news-date, .award-year { width: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="#">Pinqiao Wang</a>
+    <div class="nav-links">
+      <a href="#news">News</a>
+      <a href="#experience">Experience</a>
+      <a href="#publications">Publications</a>
+      <a href="#projects">Projects</a>
+      <a href="#awards">Awards</a>
+      <a href="#personal">Personal</a>
+    </div>
+  </div>
+</nav>
+
+<div class="banner">
+  <div class="banner-overlay"></div>
+</div>
+
+<div class="container">
+
+<!-- HERO -->
+<section class="hero reveal">
+  <div class="hero-photo">
+    <img src="images/photo.jpg" alt="Pinqiao Wang">
+  </div>
+  <div class="hero-info">
+    <h1>Pinqiao Wang</h1>
+    <div class="role">PhD Student in Data Science</div>
+    <div class="affiliation"><a href="https://www.virginia.edu/" target="_blank">University of Virginia</a>, advised by <a href="http://sheng-li.org/" target="_blank">Dr. Sheng Li</a></div>
+    <p class="hero-bio">
+      I am a PhD student at the <strong>RISE Lab</strong>, School of Data Science, UVA. 
+      My research focuses on developing ML/AI methods to understand agent behaviors for designing efficient 
+      algorithmic-based systems of LLM and to create reliable agent-based applications. 
+      Specific interests include <strong>Agentic AI</strong>, <strong>LLM Reasoning</strong>, 
+      <strong>Multimodal LLMs</strong>, and <strong>AI Applications</strong>.
+    </p>
+    <div class="hero-links">
+      <a href="mailto:wug7aj@virginia.edu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Email
+      </a>
+      <a href="https://scholar.google.com/citations?user=_aI_woMAAAAJ&hl=en/" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        Scholar
+      </a>
+      <a href="https://github.com/PinqiaoWang" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        GitHub
+      </a>
+      <a href="resume.pdf" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        CV
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="section" id="news">
+  <h2 class="section-title reveal"><span class="emoji">📣</span> News</h2>
+  <ul class="news-list">
+    <li class="news-item reveal">
+      <span class="news-date">&nbsp;</span>
+      <span class="news-text" style="color:var(--faint); font-style:italic;">Stay tuned — exciting updates coming soon.</span>
+    </li>
+  </ul>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <h2 class="section-title reveal"><span class="emoji">💼</span> Experience</h2>
+  <div class="exp-list">
+
+    <div class="exp-item reveal">
+      <div class="exp-logo"><img src="images/uva.png" alt="UVA"></div>
+      <div class="exp-content">
+        <div class="exp-role">PhD Research Assistant</div>
+        <div class="exp-org"><a href="http://sheng-li.org/" target="_blank">RISE Lab</a>, School of Data Science, University of Virginia</div>
+        <div class="exp-meta">Charlottesville, VA · Aug 2025 – Present</div>
+        <div class="exp-desc">Advisor: Prof. Sheng Li. Research on Agentic AI, LLM reasoning, and Multi-Modality LLM.</div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-logo"><img src="images/ai4f.png" alt="AI4Finance"></div>
+      <div class="exp-content">
+        <div class="exp-role">Research Lead (part-time)</div>
+        <div class="exp-org"><a href="https://github.com/AI4Finance-Foundation" target="_blank">AI4Finance Foundation</a></div>
+        <div class="exp-meta">Remote · Jan 2024 – Present</div>
+        <div class="exp-desc">Leading Finance LLM development and evaluation. FinRobot Pro ranked Top 50 on GitHub trending.</div>
+        <div class="exp-desc">Published first-author paper at ACM ICAIF 2024 (oral, top 5%). Developed multi-layer debate RL algorithm for equity research report generation.</div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-logo"><img src="images/agam.png" alt="Agam"></div>
+      <div class="exp-content">
+        <div class="exp-role">AI Research Intern</div>
+        <div class="exp-org">Agam Capital Management, LLC · IBM Watson AI Lab</div>
+        <div class="exp-meta">Teaneck, NJ · Jun 2024 – Aug 2024</div>
+        <div class="exp-desc">Designed RAG + MoE inference pipeline achieving 85% accuracy in automated code translation and Q&A generation.</div>
+      </div>
+    </div>
+
+
+    <div class="exp-item reveal">
+      <div class="exp-logo"><img src="images/baidu.png" alt="Baidu"></div>
+      <div class="exp-content">
+        <div class="exp-role">Research Intern</div>
+        <div class="exp-org">Baidu, Inc. · NLP Lab</div>
+        <div class="exp-meta">Shenzhen, China · May 2023 – Aug 2023</div>
+        <div class="exp-desc">Enhanced ERNIE model for legal document summarization, achieving 15% improvement in accuracy over internal benchmarks.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="section" id="publications">
+  <h2 class="section-title reveal"><span class="emoji">📝</span> Publications</h2>
+
+  <div class="pub-group reveal">
+    <div class="pub-group-title">Preprints</div>
+    <ul class="pub-list">
+      <li class="pub-item">
+        <div class="pub-marker"></div>
+        <div class="pub-content">
+          <div class="pub-venue">Under Review</div>
+          <div class="pub-title">Multi-Agent Debate: A Unified Agentic Framework for Tabular Anomaly Detection</div>
+          <div class="pub-authors"><span class="me">Pinqiao Wang</span>, Sheng Li</div>
+          <div class="pub-badges">
+            <a href="#" class="pub-badge paper">Paper</a>
+            <a href="#" class="pub-badge code">Code</a>
+          </div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <div class="pub-marker"></div>
+        <div class="pub-content">
+          <div class="pub-venue">Under Review</div>
+          <div class="pub-title">ItinBench: Benchmarking Planning Across Multiple Cognitive Dimensions with Large Language Models</div>
+          <div class="pub-authors">Tianlong Wang, <span class="me">Pinqiao Wang</span>, Weili Shi, Sheng Li</div>
+          <div class="pub-badges">
+            <a href="#" class="pub-badge paper">Paper</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="pub-group reveal">
+    <div class="pub-group-title">Peer-Reviewed</div>
+    <ul class="pub-list">
+      <li class="pub-item">
+        <div class="pub-marker"></div>
+        <div class="pub-content">
+          <div class="pub-venue">ACM ICAIF 2024</div>
+          <div class="pub-title">FinRobot: AI Agent for Equity Research and Valuation with Large Language Models</div>
+          <div class="pub-authors"><span class="me">Pinqiao Wang</span>, Tianyu Zhou*, Yilin Wu*, Hongyang Yang</div>
+          <div class="pub-badges">
+            <a href="#" class="pub-badge paper">Paper</a>
+            <a href="#" class="pub-badge code">Code</a>
+            <span class="pub-badge oral">Oral (Top 5%)</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <h2 class="section-title reveal"><span class="emoji">🔬</span> Projects</h2>
+  <div class="project-grid">
+
+    <div class="project-card reveal">
+      <div class="project-tag">Multi-Agent Systems · 2025–present</div>
+      <h3>MAD</h3>
+      <p>Multi-Agent Debate — a unified agentic framework for tabular anomaly detection. Treats detector disagreement as a first-class signal, resolved through a mathematically grounded coordination layer with LLM-based critics.</p>
+      <div class="proj-links">
+        <a href="#">Paper</a>
+        <a href="#">Code</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-tag">Multimodal LLM · 2025–present</div>
+      <h3>CODA</h3>
+      <p>Conflict-Aware Dynamic Arbitration — investigating how multimodal LLMs handle text-visual conflicts during inference. Built on Bayesian precision weighting and semantic entropy.</p>
+      <div class="proj-links">
+        <a href="#">Paper</a>
+        <a href="#">Code</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-tag">AI Agent · ACM ICAIF 2024</div>
+      <h3>FinRobot</h3>
+      <p>AI agent platform for equity research and valuation with LLMs. Multi-layer debate RL algorithm with chain-of-thought prompting for producing full equity research reports. FinRobot Pro ranked Top 50 on GitHub trending.</p>
+      <div class="proj-links">
+        <a href="#" >Paper</a>
+        <a href="https://github.com/AI4Finance-Foundation/FinRobot" target="_blank">Code</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-tag">Multi-Agent Systems · UVA</div>
+      <h3>AI Teaching Assistant</h3>
+      <p>Agentic system for teaching and administrative work at UVA's School of Data Science. Working with Prof. Prince Afriyie and Prof. Gianluca Guadagni.</p>
+      <div class="proj-links">
+        <a href="#">Demo</a>
+        <a href="#">Code</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-tag">LLM Benchmark · 2025</div>
+      <h3>ItinBench</h3>
+      <p>Benchmarking LLM planning capabilities across multiple cognitive dimensions — evaluating spatial, temporal, and constraint-based reasoning in travel itinerary generation.</p>
+      <div class="proj-links">
+        <a href="#">Paper</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="border-style: dashed; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 140px;">
+      <div class="project-tag" style="margin-bottom: 0.5rem;">More to come</div>
+      <h3 style="color: var(--faint); font-weight: 400; font-size: 0.95rem;">New projects in progress...</h3>
+    </div>
+
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="section" id="awards">
+  <h2 class="section-title reveal"><span class="emoji">🏆</span> Awards</h2>
+  <ul class="awards-list">
+    <li class="award-item reveal">
+      <span class="award-year">2025</span>
+      <span class="award-text">Honor Graduate Student Award, Dept. of Statistics, Columbia University</span>
+    </li>
+    <li class="award-item reveal">
+      <span class="award-year">2024</span>
+      <span class="award-text">Best Presentation Award, ACM International Conference on AI in Finance</span>
+    </li>
+    <li class="award-item reveal">
+      <span class="award-year">2024</span>
+      <span class="award-text">Graduate School of Arts and Sciences Travel Grant, Columbia University</span>
+    </li>
+    <li class="award-item reveal">
+      <span class="award-year">2023</span>
+      <span class="award-text">All-track Champion (1st/117), CDSS Data Science Hackathon, New York</span>
+    </li>
+    <li class="award-item reveal">
+      <span class="award-year">2023</span>
+      <span class="award-text">Student Representative Award, Columbia University</span>
+    </li>
+  </ul>
+</section>
+
+<!-- SERVICE -->
+<section class="section" id="service">
+  <h2 class="section-title reveal"><span class="emoji">📋</span> Service</h2>
+  <div class="service-text reveal">
+    <strong>Reviewer:</strong>&nbsp;
+    <a href="https://icml.cc/" target="_blank">ICML</a> 2026,&nbsp;
+    <a href="https://www.aclweb.org/" target="_blank">ACL</a> 2025
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+  <h2 class="section-title reveal"><span class="emoji">🎓</span> Education</h2>
+  <div class="exp-list">
+    <div class="exp-item reveal">
+      <div class="exp-logo"><img src="images/uva.png" alt="UVA"></div>
+      <div class="exp-content">
+        <div class="exp-role">Ph.D. in Data Science</div>
+        <div class="exp-org">University of Virginia</div>
+        <div class="exp-meta">Charlottesville, VA · Expected May 2030</div>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-logo"><img src="images/columbia.png" alt="Columbia"></div>
+      <div class="exp-content">
+        <div class="exp-role">M.A. in Statistics <span style="color:var(--accent); font-weight:400; font-size:0.8rem;">with Honor</span></div>
+        <div class="exp-org">Columbia University</div>
+        <div class="exp-meta">New York, NY · December 2024</div>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-logo"><img src="images/unc.png" alt="UNC"></div>
+      <div class="exp-content">
+        <div class="exp-role">B.S. in Statistics &amp; Analytics, and Economics <span style="color:var(--accent); font-weight:400; font-size:0.8rem;">Highest Distinction</span></div>
+        <div class="exp-org">University of North Carolina at Chapel Hill</div>
+        <div class="exp-meta">Chapel Hill, NC · May 2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAL -->
+<section class="section" id="personal">
+  <h2 class="section-title reveal"><span class="emoji">🎵</span> Personal</h2>
+  <div class="personal-content reveal">
+    <div class="personal-text">
+      <p>
+        Outside the lab, I compose and produce music. The creative process shares more with 
+        research than one might expect — iterating on ideas, embracing happy accidents, 
+        and knowing when something finally <em>clicks</em>.
+      </p>
+      <p>
+        More about my interests and life outside of research will appear here. 
+        Feel free to reach out if you'd like to chat about research, music, or anything in between.
+      </p>
+    </div>
+    <div class="music-card">
+      <h3>Music</h3>
+      <p class="music-subtitle">Original compositions — coming soon</p>
+      <div class="music-track">
+        <span class="track-num">01</span>
+        <div class="track-info">
+          <div class="track-title">Track Title Here</div>
+          <div class="track-meta">2025 · 3:42</div>
+        </div>
+        <button class="track-play" aria-label="Play">
+          <svg viewBox="0 0 12 14"><polygon points="0,0 12,7 0,14"/></svg>
+        </button>
+      </div>
+      <div class="music-track">
+        <span class="track-num">02</span>
+        <div class="track-info">
+          <div class="track-title">Another Track</div>
+          <div class="track-meta">2025 · 4:18</div>
+        </div>
+        <button class="track-play" aria-label="Play">
+          <svg viewBox="0 0 12 14"><polygon points="0,0 12,7 0,14"/></svg>
+        </button>
+      </div>
+      <div class="music-track">
+        <span class="track-num">03</span>
+        <div class="track-info">
+          <div class="track-title">Something New</div>
+          <div class="track-meta">2026 · 2:55</div>
+        </div>
+        <button class="track-play" aria-label="Play">
+          <svg viewBox="0 0 12 14"><polygon points="0,0 12,7 0,14"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Pinqiao Wang · <a href="mailto:wug7aj@virginia.edu">wug7aj@virginia.edu</a></p>
+</footer>
+
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) window.scrollTo({ top: t.offsetTop - 50, behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
