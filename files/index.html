@@ -267,15 +267,8 @@ nav {
 .track-num { font-family: var(--mono); font-size: 0.7rem; color: var(--faint); width: 16px; text-align: right; }
 .track-info { flex: 1; }
 .track-title { font-size: 0.83rem; font-weight: 500; color: var(--ink); }
-.track-meta { font-size: 0.7rem; color: var(--muted); }
-.track-play {
-  width: 28px; height: 28px; border-radius: 50%;
-  border: 1.5px solid var(--rule); background: transparent;
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s; color: var(--faint);
-}
-.track-play:hover { border-color: var(--accent); color: var(--accent); }
-.track-play svg { width: 9px; height: 9px; fill: currentColor; margin-left: 1px; }
+.track-meta { font-size: 0.7rem; color: var(--muted); margin-top: 0.15rem; }
+.track-audio { margin-top: 0.55rem; width: 100%; height: 32px; }
 
 /* ─── FOOTER ─── */
 footer {
@@ -634,36 +627,39 @@ footer a:hover { color: var(--ink); }
     </div>
     <div class="music-card">
       <h3>Music</h3>
-      <p class="music-subtitle">Original compositions — coming soon</p>
+      <p class="music-subtitle">Original compositions</p>
       <div class="music-track">
         <span class="track-num">01</span>
         <div class="track-info">
-          <div class="track-title">Track Title Here</div>
-          <div class="track-meta">2025 · 3:42</div>
+          <div class="track-title">Echoes On The Highway</div>
+          <div class="track-meta">MP3</div>
+          <audio class="track-audio" controls preload="none">
+            <source src="music/Echoes%20On%20The%20Highway.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
         </div>
-        <button class="track-play" aria-label="Play">
-          <svg viewBox="0 0 12 14"><polygon points="0,0 12,7 0,14"/></svg>
-        </button>
       </div>
       <div class="music-track">
         <span class="track-num">02</span>
         <div class="track-info">
-          <div class="track-title">Another Track</div>
-          <div class="track-meta">2025 · 4:18</div>
+          <div class="track-title">Not a Kid</div>
+          <div class="track-meta">MP3</div>
+          <audio class="track-audio" controls preload="none">
+            <source src="music/Not%20a%20Kid.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
         </div>
-        <button class="track-play" aria-label="Play">
-          <svg viewBox="0 0 12 14"><polygon points="0,0 12,7 0,14"/></svg>
-        </button>
       </div>
       <div class="music-track">
         <span class="track-num">03</span>
         <div class="track-info">
-          <div class="track-title">Something New</div>
-          <div class="track-meta">2026 · 2:55</div>
+          <div class="track-title">where to now_</div>
+          <div class="track-meta">MP3</div>
+          <audio class="track-audio" controls preload="none">
+            <source src="music/where%20to%20now_.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
         </div>
-        <button class="track-play" aria-label="Play">
-          <svg viewBox="0 0 12 14"><polygon points="0,0 12,7 0,14"/></svg>
-        </button>
       </div>
     </div>
   </div>
