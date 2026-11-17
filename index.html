@@ -1,9 +1,606 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta http-equiv="refresh" content="0; url=files/" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Pinqiao Wang is a PhD candidate in Data Science at the University of Virginia working on multi-agent systems and trustworthy multimodal LLM reasoning.">
+<meta name="author" content="Pinqiao Wang">
+<title>Pinqiao Wang</title>
+<link rel="canonical" href="https://pinqiaowang.github.io/">
+<link rel="icon" href="files/images/photo.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Pinqiao Wang",
+  "url": "https://pinqiaowang.github.io/",
+  "image": "https://pinqiaowang.github.io/files/images/photo.jpg",
+  "jobTitle": "PhD Candidate",
+  "affiliation": { "@type": "CollegeOrUniversity", "name": "University of Virginia" },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Columbia University" },
+    { "@type": "CollegeOrUniversity", "name": "University of North Carolina at Chapel Hill" }
+  ],
+  "sameAs": [
+    "https://scholar.google.com/citations?user=_aI_woMAAAAJ",
+    "https://datascience.virginia.edu/people/pinqiao-wang",
+    "https://www.linkedin.com/in/pinqiao-wang/",
+    "https://github.com/PinqiaoWang"
+  ]
+}
+</script>
+
+<script>
+// Apply a saved theme choice before first paint
+try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* Layout: a fixed identity rail on the left, and on the right a ledger where every row
+   is "mono label | content" (dates, venues, review status), like a submission console. */
+:root {
+  --bg: #f5f6f9;
+  --panel: #ffffff;
+  --ink: #131a2b;
+  --ink-2: #48516a;
+  --ink-3: #7a8298;
+  --rule: #dcdfe8;
+  --accent: #bd4f06;
+  --accent-wash: #fbeadc;
+  --ok: #1f6f52;
+  --ok-wash: #e0f1ea;
+
+  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  --label: 8.5rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e131e; --panel: #151b29; --ink: #e7eaf2; --ink-2: #aab2c5; --ink-3: #78819a;
+    --rule: #262e40; --accent: #ff9d57; --accent-wash: #33210f; --ok: #6fd0a8; --ok-wash: #12291f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e131e; --panel: #151b29; --ink: #e7eaf2; --ink-2: #aab2c5; --ink-3: #78819a;
+  --rule: #262e40; --accent: #ff9d57; --accent-wash: #33210f; --ok: #6fd0a8; --ok-wash: #12291f;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, p, ul { margin: 0; padding: 0; }
+ul { list-style: none; }
+a { color: inherit; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 3px; transition: color .15s; }
+a:hover { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+.shell {
+  max-width: 1120px; margin: 0 auto;
+  padding-block: 56px 40px;
+  padding-left: max(24px, env(safe-area-inset-left, 0px));
+  padding-right: max(24px, env(safe-area-inset-right, 0px));
+  display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 72px;
+}
+
+/* ---- Identity rail ---- */
+.rail { position: sticky; top: 40px; align-self: start; display: flex; flex-direction: column; gap: 22px; }
+.portrait {
+  width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 38%;
+  display: block; border-radius: 4px;
+}
+.name { font-family: var(--display); font-weight: 700; font-size: 2.5rem; line-height: 1; letter-spacing: -0.02em; }
+.role { color: var(--ink-2); font-size: .95rem; line-height: 1.5; margin-top: 10px; }
+.contact { display: flex; flex-direction: column; gap: 4px; font-family: var(--mono); font-size: .8rem; }
+.contact a { text-decoration: none; color: var(--ink-2); display: flex; justify-content: space-between; gap: 12px; padding: 3px 0; border-bottom: 1px solid var(--rule); }
+.contact a:hover { color: var(--accent); }
+.contact a span:last-child { color: var(--ink-3); }
+.contact .addr { color: var(--ink-2); padding: 3px 0 7px; user-select: all; }
+
+.toc { display: flex; flex-direction: column; gap: 2px; font-size: .9rem; }
+.toc a { text-decoration: none; color: var(--ink-3); padding: 2px 0 2px 12px; border-left: 2px solid transparent; }
+.toc a:hover { color: var(--ink); }
+.toc a.on { color: var(--ink); border-left-color: var(--accent); font-weight: 500; }
+
+.theme {
+  align-self: flex-start; font: 500 .75rem var(--mono); color: var(--ink-3);
+  background: none; border: 1px solid var(--rule); border-radius: 3px; padding: 5px 10px; cursor: pointer;
+}
+.theme:hover { color: var(--ink); border-color: var(--ink-3); }
+
+/* ---- Main column ---- */
+.main { display: flex; flex-direction: column; gap: 64px; min-width: 0; }
+.sec { display: flex; flex-direction: column; gap: 20px; }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-bottom: 1px solid var(--ink); padding-bottom: 8px; }
+.sec-head h2 { font-family: var(--display); font-weight: 700; font-size: 1.35rem; letter-spacing: -0.01em; text-wrap: balance; }
+.sec-note { font-family: var(--mono); font-size: .75rem; color: var(--ink-3); }
+
+.lede { font-family: var(--display); font-weight: 500; font-size: 1.7rem; line-height: 1.3; letter-spacing: -0.015em; text-wrap: balance; }
+.lede em { font-style: normal; color: var(--accent); }
+.prose { display: flex; flex-direction: column; gap: 14px; color: var(--ink-2); max-width: 65ch; }
+.prose strong { color: var(--ink); font-weight: 600; }
+.topics { display: flex; flex-wrap: wrap; gap: 8px; font-family: var(--mono); font-size: .78rem; }
+.topics li { border: 1px solid var(--rule); background: var(--panel); border-radius: 3px; padding: 3px 9px; color: var(--ink-2); }
+
+/* ---- Ledger rows ---- */
+.rows { display: flex; flex-direction: column; }
+.row { display: grid; grid-template-columns: var(--label) minmax(0, 1fr); gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.row:first-child { padding-top: 0; }
+.row[hidden] { display: none; }
+.lab { font-family: var(--mono); font-size: .76rem; line-height: 1.6; color: var(--ink-3); padding-top: 3px; font-variant-numeric: tabular-nums; }
+.lab b { display: block; font-weight: 500; color: var(--ink); }
+.what { min-width: 0; }
+.what h3 { font-family: var(--body); font-size: 1rem; font-weight: 600; line-height: 1.45; text-wrap: balance; }
+.what h3 a { text-decoration: none; }
+.what h3 a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+.sub { color: var(--ink-2); font-size: .92rem; }
+.desc { color: var(--ink-2); font-size: .92rem; margin-top: 4px; max-width: 62ch; }
+.authors { color: var(--ink-3); font-size: .9rem; line-height: 1.55; margin-top: 4px; }
+.authors .me { color: var(--ink); font-weight: 600; }
+.links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 6px; font-family: var(--mono); font-size: .76rem; }
+.links a { color: var(--ink-2); }
+.links a:hover { color: var(--accent); }
+
+.pill { display: inline-block; font: 500 .7rem var(--mono); padding: 1px 7px; border-radius: 3px; margin-top: 4px; }
+.pill.acc { color: var(--ok); background: var(--ok-wash); }
+.pill.rev { color: var(--accent); background: var(--accent-wash); }
+.pill.pre { color: var(--ink-2); background: var(--rule); }
+
+.filters { display: flex; flex-wrap: wrap; gap: 6px; }
+.filters button {
+  font: 500 .76rem var(--mono); color: var(--ink-2); cursor: pointer;
+  background: none; border: 1px solid var(--rule); border-radius: 3px; padding: 4px 10px;
+}
+.filters button:hover { border-color: var(--ink-3); color: var(--ink); }
+.filters button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.filters button span { opacity: .6; margin-left: 4px; }
+
+.news .row { padding: 9px 0; }
+.news .row:first-child { padding-top: 0; }
+.news .what { color: var(--ink-2); }
+.news strong { color: var(--ink); font-weight: 600; }
+
+/* ---- Music ---- */
+.tracks { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; }
+.track { display: grid; grid-template-columns: 2.2rem minmax(0, 11rem) minmax(0, 1fr); align-items: center; gap: 14px; padding: 12px 16px; }
+.track + .track { border-top: 1px solid var(--rule); }
+.track .n { font-family: var(--mono); font-size: .76rem; color: var(--ink-3); }
+.track .t { font-weight: 500; font-size: .95rem; }
+.track audio { width: 100%; height: 34px; }
+
+.foot { font-family: var(--mono); font-size: .74rem; color: var(--ink-3); border-top: 1px solid var(--rule); padding-top: 18px; }
+
+/* ---- Narrow screens ---- */
+@media (max-width: 900px) {
+  .shell {
+    grid-template-columns: minmax(0, 1fr); gap: 44px; padding-block: 28px 32px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .rail { position: static; display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px 20px; align-items: start; }
+  .contact, .theme { grid-column: 1 / -1; }
+  .toc { display: none; }
+  .name { font-size: 2rem; }
+  .main { gap: 48px; }
+  .lede { font-size: 1.35rem; }
+}
+@media (max-width: 560px) {
+  .row { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .lab { padding-top: 0; }
+  .lab b { display: inline; margin-right: 8px; }
+  .track { grid-template-columns: 2rem minmax(0, 1fr); }
+  .track audio { grid-column: 1 / -1; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
 </head>
+
 <body>
-  <p>Redirecting to <a href="files/">Pinqiao Wang's homepage</a>...</p>
+<div class="shell">
+
+  <aside class="rail">
+    <img class="portrait" src="files/images/photo.jpg" alt="Portrait of Pinqiao Wang">
+    <div>
+      <h1 class="name">Pinqiao Wang</h1>
+      <p class="role">PhD Candidate in Data Science<br>University of Virginia</p>
+    </div>
+    <div class="contact">
+      <div class="addr">wug7aj@virginia.edu</div>
+      <a href="https://scholar.google.com/citations?user=_aI_woMAAAAJ&hl=en"><span>Google Scholar</span><span>&nearr;</span></a>
+      <a href="https://github.com/PinqiaoWang"><span>GitHub</span><span>&nearr;</span></a>
+      <a href="https://www.linkedin.com/in/pinqiao-wang/"><span>LinkedIn</span><span>&nearr;</span></a>
+      <a href="files/resume.pdf"><span>CV</span><span>PDF</span></a>
+    </div>
+    <nav class="toc" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#news">News</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#service">Service &amp; Teaching</a>
+      <a href="#music">Music</a>
+    </nav>
+    <button class="theme" id="theme" type="button">Switch theme</button>
+  </aside>
+
+  <main class="main">
+
+    <!-- About -->
+    <section class="sec" id="about">
+      <p class="lede">I study how LLM agents <em>reason, disagree, and use evidence</em>, so the systems built on them can be trusted.</p>
+      <div class="prose">
+        <p>
+          I am a PhD candidate in Data Science at the University of Virginia, working in the
+          <a href="http://sheng-li.org/">RISE Lab</a> with <a href="http://sheng-li.org/">Prof. Sheng Li</a>.
+          My recent work asks when multimodal LLMs actually look at the image instead of following a text prior,
+          how multi-agent systems should resolve disagreement, and how models behave when they refuse.
+        </p>
+        <p>
+          In summer 2026 I was an AI Engineering Intern at <strong>Capital One</strong>. I am also a part-time Research Lead at the
+          <a href="https://github.com/AI4Finance-Foundation">AI4Finance Foundation</a>, where I worked on
+          <a href="https://github.com/AI4Finance-Foundation/FinRobot">FinRobot</a>, an open-source AI agent for equity research.
+          Before UVA, I studied statistics at Columbia University (M.A.) and at UNC-Chapel Hill (B.S., with economics).
+        </p>
+      </div>
+      <ul class="topics" aria-label="Research interests">
+        <li>Multi-Agent Systems</li>
+        <li>Trustworthy MLLM Reasoning</li>
+        <li>AI for Finance &amp; Education</li>
+      </ul>
+    </section>
+
+    <!-- News -->
+    <section class="sec" id="news">
+      <div class="sec-head"><h2>News</h2></div>
+      <div class="rows news">
+        <div class="row"><div class="lab">2026-10</div><div class="what"><strong>ItinBench</strong> is published in <strong>TMLR</strong>.</div></div>
+        <div class="row"><div class="lab">2026-09</div><div class="what">New preprint on evidence use in whole-slide pathology VLMs is on <a href="https://arxiv.org/abs/2609.32185">arXiv</a>.</div></div>
+        <div class="row"><div class="lab">2026-08</div><div class="what">&ldquo;You Shouldn't Have Asked&rdquo; is accepted to the <strong>EMNLP 2026</strong> main conference.</div></div>
+        <div class="row"><div class="lab">2026-07</div><div class="what">One paper accepted at the <strong>ICML 2026</strong> FoGen Workshop.</div></div>
+        <div class="row"><div class="lab">2026-06</div><div class="what">Joined <strong>Capital One</strong> as an AI Engineering Intern for the summer.</div></div>
+        <div class="row"><div class="lab">2026-04</div><div class="what">Passed my PhD qualifying exam.</div></div>
+      </div>
+    </section>
+
+    <!-- Research -->
+    <section class="sec" id="research">
+      <div class="sec-head">
+        <h2>Research</h2>
+        <span class="sec-note">* equal contribution</span>
+      </div>
+      <div class="filters" role="group" aria-label="Filter papers">
+        <button type="button" id="f-all" data-f="all" aria-pressed="true">All<span></span></button>
+        <button type="button" id="f-first" data-f="first" aria-pressed="false">First author<span></span></button>
+        <button type="button" id="f-acc" data-f="acc" aria-pressed="false">Published<span></span></button>
+        <button type="button" id="f-rev" data-f="rev" aria-pressed="false">Under review<span></span></button>
+      </div>
+
+      <div class="rows" id="papers">
+
+        <article class="row" data-tags="first rev">
+          <div class="lab"><b>2026</b><span class="pill rev">Under review</span></div>
+          <div class="what">
+            <h3>More Than Meets the Eye: When Text Overrides Correct Visual Answers in Multimodal LLMs</h3>
+            <p class="authors"><span class="me">Pinqiao Wang</span>, Daiqing Qi, Wenhao Zhang, Lehan Yang, Tianlong Wang, Yiqing Yang, Hanzhang Yuan, Sheng Li</p>
+          </div>
+        </article>
+
+        <article class="row" data-tags="first acc">
+          <div class="lab"><b>EMNLP 2026</b><span class="pill acc">Main conference</span></div>
+          <div class="what">
+            <h3><a href="https://arxiv.org/abs/2608.30856">You Shouldn't Have Asked: A Pragmatics-Inspired Taxonomy for Evaluating LLM Refusals</a></h3>
+            <p class="authors">Ruoxuan Li*, <span class="me">Pinqiao Wang*</span>, Sheng Li, Cameron Robert Jones</p>
+            <div class="links"><a href="https://arxiv.org/abs/2608.30856">arXiv</a><a href="https://github.com/PinqiaoWang/LLM_Refusal_Strategy">Code</a></div>
+          </div>
+        </article>
+
+        <article class="row" data-tags="first">
+          <div class="lab"><b>2026</b><span class="pill pre">Preprint</span></div>
+          <div class="what">
+            <h3><a href="https://arxiv.org/abs/2602.14251">TabMATE: A Multi-Agent Framework for Tabular Anomaly Detection</a></h3>
+            <p class="authors"><span class="me">Pinqiao Wang</span>, Hanzhang Yuan, Yiqing Yang, Wenhao Zhang, Sheng Li</p>
+            <div class="links"><a href="https://arxiv.org/abs/2602.14251">arXiv (earlier version, as &ldquo;Multi-Agent Debate&rdquo;)</a></div>
+          </div>
+        </article>
+
+        <article class="row" data-tags="acc">
+          <div class="lab"><b>TMLR 2026</b><span class="pill acc">Journal</span></div>
+          <div class="what">
+            <h3><a href="https://openreview.net/forum?id=Idp60dibCE">ItinBench: Benchmarking Planning Across Multiple Cognitive Dimensions with Large Language Models</a></h3>
+            <p class="authors">Tianlong Wang, <span class="me">Pinqiao Wang</span>, Weili Shi, Sheng Li</p>
+            <div class="links"><a href="https://openreview.net/forum?id=Idp60dibCE">OpenReview</a><a href="https://arxiv.org/abs/2603.19515">arXiv</a></div>
+          </div>
+        </article>
+
+        <article class="row" data-tags="rev">
+          <div class="lab"><b>2026</b><span class="pill rev">Under review</span></div>
+          <div class="what">
+            <h3><a href="https://arxiv.org/abs/2609.32185">Contamination, Prior, or Evidence? Decomposing and Training Evidence Use in Whole-Slide Vision&ndash;Language Models</a></h3>
+            <p class="authors">Wenhao Zhang, Zhongliang Zhou, Shiyuan Zhang, Yiqing Yang, <span class="me">Pinqiao Wang</span>, Hanzhang Yuan, Tianlong Wang, Lehan Yang, Hanyin Wang, John Kang, Sheng Li</p>
+            <div class="links"><a href="https://arxiv.org/abs/2609.32185">arXiv</a></div>
+          </div>
+        </article>
+
+        <article class="row" data-tags="rev">
+          <div class="lab"><b>2026</b><span class="pill rev">Under review</span></div>
+          <div class="what">
+            <h3>Video MLLMs Can Self-Correct Without Reflection: Rewatching Beats Rethinking in Long Video Understanding</h3>
+            <p class="authors">Yiqing Yang, Guohao Sun, <span class="me">Pinqiao Wang</span>, Wenhao Zhang, Lehan Yang, Guangya Wan, Zhiqiang Tao, Sheng Li</p>
+          </div>
+        </article>
+
+        <article class="row" data-tags="rev">
+          <div class="lab"><b>2026</b><span class="pill rev">Under review</span></div>
+          <div class="what">
+            <h3>Don't Loop, Read Wide: Rethinking Agentic Search for Long Video Understanding</h3>
+            <p class="authors">Yiqing Yang, Guangya Wan, Hanzhang Yuan, <span class="me">Pinqiao Wang</span>, Wenhao Zhang, Tianlong Wang, Xinyan Liu, Zhuoning Xu, Lehan Yang, Sheng Li</p>
+          </div>
+        </article>
+
+        <article class="row" data-tags="rev">
+          <div class="lab"><b>2026</b><span class="pill rev">Under review</span></div>
+          <div class="what">
+            <h3>PlainSight: Thinking with Images Fails on Answers in Plain View</h3>
+            <p class="authors">Hanzhang Yuan, Yiqing Yang, Wenhao Zhang, <span class="me">Pinqiao Wang</span>, Tianlong Wang, Po-Wei Chen, Daiqing Qi, Weili Shi, Sheng Li</p>
+          </div>
+        </article>
+
+        <article class="row" data-tags="rev">
+          <div class="lab"><b>2026</b><span class="pill rev">Under review</span></div>
+          <div class="what">
+            <h3>Too Small to Tell: Auditing Sampled Decisions in Self-Evolving Agent Harnesses</h3>
+            <p class="authors">Wenhao Zhang, Shiyuan Zhang, Daiqing Qi, Guangya Wan, <span class="me">Pinqiao Wang</span>, Yiqing Yang, Sheng Li</p>
+          </div>
+        </article>
+
+        <article class="row" data-tags="acc">
+          <div class="lab"><b>ICML 2026</b><span class="pill acc">FoGen Workshop</span></div>
+          <div class="what">
+            <h3><a href="https://openreview.net/forum?id=QITfyV8G9Y">Evaluating Spatial World Modeling in Video Generators via 3D Camera Trajectory Generation</a></h3>
+            <p class="authors">Tianlong Wang, Lehan Yang, Yuheng Liu, Hanzhang Yuan, Wenhao Zhang, <span class="me">Pinqiao Wang</span>, Yifan Li, Yu Kong, Sheng Li</p>
+            <div class="links"><a href="https://openreview.net/forum?id=QITfyV8G9Y">OpenReview</a></div>
+          </div>
+        </article>
+
+        <article class="row" data-tags="">
+          <div class="lab"><b>2026</b><span class="pill pre">Manuscript</span></div>
+          <div class="what">
+            <h3>LANTERN: Learning A Pathology Vision Foundation Model via Text-Supervised Disentangled Representation</h3>
+            <p class="authors">Wenhao Zhang, Zhongliang Zhou, John Kang, Edward T. Richardson, John B. Wojcik, Carol E. Pe&ntilde;a, Qiaohui Zhou, Lehan Yang, Tianlong Wang, <span class="me">Pinqiao Wang</span>, Wei Liu, Sheng Li</p>
+          </div>
+        </article>
+
+        <article class="row" data-tags="first acc">
+          <div class="lab"><b>ICAIF 2024</b><span class="pill acc">AI4F &middot; Oral</span></div>
+          <div class="what">
+            <h3><a href="https://arxiv.org/abs/2411.08804">FinRobot: AI Agent for Equity Research and Valuation with Large Language Models</a></h3>
+            <p class="authors">Tianyu Zhou*, <span class="me">Pinqiao Wang*</span>, Yilin Wu*, Hongyang Yang</p>
+            <div class="links"><a href="https://arxiv.org/abs/2411.08804">arXiv</a><a href="https://github.com/AI4Finance-Foundation/FinRobot">Code</a></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="sec" id="projects">
+      <div class="sec-head"><h2>Projects</h2></div>
+      <div class="rows">
+        <div class="row">
+          <div class="lab"><b>Multimodal LLM</b>2025 &ndash; now</div>
+          <div class="what">
+            <h3>CODA</h3>
+            <p class="desc">Conflict-Aware Dynamic Arbitration: how multimodal LLMs handle text&ndash;visual conflicts at inference time, built on Bayesian precision weighting and semantic entropy.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="lab"><b>Multi-agent</b>UVA</div>
+          <div class="what">
+            <h3>AI Teaching Assistant</h3>
+            <p class="desc">A multi-agent system over Canvas course documents for teaching and administrative work at the School of Data Science, with Prof. Prince Afriyie and Prof. Gianluca Guadagni.</p>
+            <div class="links"><a href="https://github.com/PinqiaoWang/canvas-agents">Code</a></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="lab"><b>MLLM agents</b>2026</div>
+          <div class="what">
+            <h3>Event Risk Monitoring</h3>
+            <p class="desc">Ongoing work on multimodal LLM agents for event risk prediction.</p>
+            <div class="links"><a href="https://github.com/PinqiaoWang/event-risk-monitoring">Code</a></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="lab"><b>Finance agents</b>AI4Finance</div>
+          <div class="what">
+            <h3>FinRobot &amp; FinGPT</h3>
+            <p class="desc">Open-source agent platform for financial analysis. I built the multi-agent chain-of-thought pipeline behind its equity research reports; FinRobot Pro reached the top 50 on GitHub trending.</p>
+            <div class="links"><a href="https://github.com/AI4Finance-Foundation/FinRobot">Code</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="sec" id="experience">
+      <div class="sec-head"><h2>Experience</h2></div>
+      <div class="rows">
+        <div class="row">
+          <div class="lab"><b>2025-08 &ndash; now</b>Charlottesville, VA</div>
+          <div class="what">
+            <h3>RISE Lab, University of Virginia</h3>
+            <p class="sub">PhD Research Assistant, with Prof. Sheng Li</p>
+            <p class="desc">Multi-agent frameworks, LLM reasoning, and vision agentic AI.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="lab"><b>2026-06 &ndash; 2026-08</b>McLean, VA</div>
+          <div class="what">
+            <h3>Capital One</h3>
+            <p class="sub">AI Engineering Intern</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="lab"><b>2024-01 &ndash; now</b>Remote</div>
+          <div class="what">
+            <h3>AI4Finance Foundation</h3>
+            <p class="sub">Research Lead (part-time), with Prof. Bruce Yang</p>
+            <p class="desc">Finance LLM development and evaluation on FinRobot and FinGPT, including a multi-layer debate algorithm with chain-of-thought prompting that produces full equity research reports.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="lab"><b>2024-06 &ndash; 2024-08</b>Teaneck, NJ</div>
+          <div class="what">
+            <h3>Agam Capital Management</h3>
+            <p class="sub">AI Research Intern</p>
+            <p class="desc">Designed a RAG + MoE inference pipeline reaching 85% accuracy on automated code translation and Q&amp;A generation.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="lab"><b>2024-02 &ndash; 2024-08</b>New York, NY</div>
+          <div class="what">
+            <h3>Department of Statistics, Columbia University</h3>
+            <p class="sub">Research Assistant, with Prof. Arian Maleki</p>
+            <p class="desc">Neural network models for high-dimensional imaging data and noisy image recovery.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="lab"><b>2024-02 &ndash; 2024-05</b>New York, NY</div>
+          <div class="what">
+            <h3>Center on Global Energy Policy, Columbia University</h3>
+            <p class="sub">Student Lead Research Assistant</p>
+            <p class="desc">ML models for optimizing carbon capture processes, and LLM tooling for automated literature review.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="lab"><b>2023-05 &ndash; 2023-08</b>Shenzhen, China</div>
+          <div class="what">
+            <h3>Baidu, NLP Lab</h3>
+            <p class="sub">Research Intern</p>
+            <p class="desc">Fine-tuned ERNIE for legal document summarization, improving accuracy by 15% over internal benchmarks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="sec" id="education">
+      <div class="sec-head"><h2>Education</h2></div>
+      <div class="rows">
+        <div class="row">
+          <div class="lab"><b>2025 &ndash; now</b>Charlottesville, VA</div>
+          <div class="what"><h3>University of Virginia</h3><p class="sub">Ph.D. in Data Science</p></div>
+        </div>
+        <div class="row">
+          <div class="lab"><b>2024-12</b>New York, NY</div>
+          <div class="what"><h3>Columbia University</h3><p class="sub">M.A. in Statistics, with honors</p></div>
+        </div>
+        <div class="row">
+          <div class="lab"><b>2023-05</b>Chapel Hill, NC</div>
+          <div class="what"><h3>University of North Carolina at Chapel Hill</h3><p class="sub">B.S. in Statistics &amp; Analytics and in Economics, with highest distinction</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service -->
+    <section class="sec" id="service">
+      <div class="sec-head"><h2>Service &amp; Teaching</h2></div>
+      <div class="rows">
+        <div class="row">
+          <div class="lab"><b>Reviewer</b></div>
+          <div class="what"><p class="sub">CVPR 2027 &middot; ICLR 2027 &middot; ICML 2026 &middot; ACL 2025</p></div>
+        </div>
+        <div class="row">
+          <div class="lab"><b>Fall 2025</b>UVA</div>
+          <div class="what"><h3>DS 5030 Understanding Uncertainty</h3><p class="sub">Teaching Assistant, with Jeffrey Woo</p></div>
+        </div>
+        <div class="row">
+          <div class="lab"><b>Spring 2023</b>UNC</div>
+          <div class="what"><h3>STOR 565 Machine Learning</h3><p class="sub">Teaching Assistant, with Yufeng Liu</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Music -->
+    <section class="sec" id="music">
+      <div class="sec-head"><h2>Music</h2><span class="sec-note">original compositions</span></div>
+      <p class="prose">Outside the lab, I compose and produce music. It has more in common with research than I expected: you iterate, keep the happy accidents, and learn to hear when something finally clicks.</p>
+      <div class="tracks">
+        <div class="track">
+          <span class="n">01</span><span class="t">Echoes On The Highway</span>
+          <audio controls preload="none" aria-label="Echoes On The Highway"><source src="files/music/Echoes%20On%20The%20Highway.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="track">
+          <span class="n">02</span><span class="t">Not a Kid</span>
+          <audio controls preload="none" aria-label="Not a Kid"><source src="files/music/Not%20a%20Kid.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="track">
+          <span class="n">03</span><span class="t">where to now?</span>
+          <audio controls preload="none" aria-label="where to now?"><source src="files/music/where%20to%20now_.mp3" type="audio/mpeg"></audio>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">&copy; 2026 Pinqiao Wang &middot; updated 2026-11</footer>
+  </main>
+</div>
+
+<script>
+// Paper filters
+(function () {
+  var rows = [].slice.call(document.querySelectorAll('#papers .row'));
+  var buttons = [].slice.call(document.querySelectorAll('.filters button'));
+  function has(row, f) { return f === 'all' || (' ' + row.getAttribute('data-tags') + ' ').indexOf(' ' + f + ' ') > -1; }
+  buttons.forEach(function (b) {
+    var f = b.getAttribute('data-f');
+    b.querySelector('span').textContent = rows.filter(function (r) { return has(r, f); }).length;
+    b.addEventListener('click', function () {
+      buttons.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+      rows.forEach(function (r) { r.hidden = !has(r, f); });
+    });
+  });
+})();
+
+// Highlight the current section in the side nav
+(function () {
+  var links = [].slice.call(document.querySelectorAll('.toc a'));
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id); });
+    });
+  }, { rootMargin: '-10% 0px -75% 0px' });
+  links.forEach(function (a) { var s = document.querySelector(a.getAttribute('href')); if (s) io.observe(s); });
+})();
+
+// Theme switch
+document.getElementById('theme').addEventListener('click', function () {
+  var root = document.documentElement;
+  var dark = root.getAttribute('data-theme')
+    ? root.getAttribute('data-theme') === 'dark'
+    : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var next = dark ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  try { localStorage.setItem('theme', next); } catch (e) {}
+});
+
+// External links open in a new tab
+[].forEach.call(document.querySelectorAll('a[href^="http"], a[href$=".pdf"]'), function (a) {
+  a.target = '_blank'; a.rel = 'noopener noreferrer';
+});
+</script>
 </body>
 </html>
